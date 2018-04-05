@@ -23,17 +23,20 @@
   <li><a href="#home">Perros</a></li>
   <li><a href="#news">Familias</a></li>
   <li><a href="#contact">Contacto</a></li>
+  	</ul>
+
         <h1>Alta Perro</h1>
+        <fieldset>
         <form method="get" action="ServletAltaPerro">
-            Chip:<br>
+          <label>   Chip: </label><br>
             <input type="text" name="chip"><br>
-            Nombre:<br>
+           <label>  Nombre:</label><br>
             <input type="text" name="nombre"><br>
-            Color:<br>
+           <label>  Color:</label><br>
             <input type="text" name="color"><br>
-            Raza:<br>
+           <label>  Raza:</label><br>
             <input type="text" name="raza"><br>
-            Amo:<br>
+           <label>  Amo:</label><br>
             <select name="amo">
                 <%
                     Gestion gestion = new Gestion();
@@ -45,12 +48,12 @@
                 
                 %>
             </select><br>
-            Peligroso:<br>
+            <label>Peligroso:</label><br>
             <select name="peligroso">
                 <option value="S">Si</option>
                 <option value="N">No</option>
             </select><br>
-            Sexo:<br>
+           <label>  Sexo:</label><br>
             <select name="sexo">
                 <option value="m">Macho</option>
                 <option value="f">Hembra</option>
@@ -58,6 +61,7 @@
             <input type="submit" value="Acptar">
             <a href="listaPerros.jsp"><input type="button" value="Cancelar"></a>
         </form>
+            </fieldset>
 
 
 
