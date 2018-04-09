@@ -21,9 +21,9 @@
     <body>
        	<h1><img src="Imagenes/encabezado.jpg" ></h1>
 	<ul>
-  <li><a href="#home">Perros</a></li>
-  <li><a href="#news">Familias</a></li>
-  <li><a href="#contact">Contacto</a></li>
+            <li><a href="listaPerros.jsp">Perros</a></li>
+            <li><a href="listaAdoptador.jsp">Familias</a></li>
+            <li><a href="https://es-es.facebook.com/ADOPTA-EN-ESPA%C3%91A-311579258852821/">Contacto</a></li>
 
 </ul><br>
         <table id="tabla">
@@ -35,7 +35,7 @@
                 <th>Amo</th>
                 <th>Peligroso</th>
                 <th>Sexo</th>
-                <th></th>
+                <th> <a href="altaPerro.jsp"><button class="btn"><img src="Iconos/veterinario.png" ></button></a></th>
             </tr>
             <%
                 Gestion gestion = new Gestion();
