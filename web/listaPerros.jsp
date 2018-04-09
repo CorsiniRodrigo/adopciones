@@ -20,14 +20,14 @@
 
     <body>
        	<h1><img src="Imagenes/encabezado.jpg" ></h1>
-	<ul>
+        <ul>
             <li><a href="listaPerros.jsp">Perros</a></li>
             <li><a href="listaAdoptador.jsp">Familias</a></li>
             <li><a href="https://es-es.facebook.com/ADOPTA-EN-ESPA%C3%91A-311579258852821/">Contacto</a></li>
 
-</ul><br>
+        </ul><br>
         <table id="tabla">
-              <tr>
+            <tr>
                 <th>Chip</th>
                 <th>Nombre</th>
                 <th>Color</th>
@@ -53,7 +53,10 @@
                     out.print("<td>" +metodos.convertiNullStringVacio(perro.getAmo().getNombre())+" - "+ metodos.convertiNullStringVacio(perro.getAmo().getDni()) + "</td>");
                     out.print("<td>" + metodos.convertirSNMF(perro.getPeligroso()) + "</td>");
                     out.print("<td>" + metodos.convertirSNMF(perro.getSexo()) + "</td>");
-                    out.print("<td>" + "</td>");
+                      out.print("<td><a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/001-lupa.png' ></button></a>"
+                                + "<a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/002-componer.png' ></button></a>"
+                                + "<a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/003-borrar.png' ></button></a>"
+                                + "</td>");
                     out.print("</tr>");
                     pos++;
 
@@ -61,6 +64,6 @@
 
             %> </table>
 
-       
+
     </body>
 </html>

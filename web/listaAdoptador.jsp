@@ -51,7 +51,6 @@
                         out.print("<td><a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/001-lupa.png' ></button></a>"
                                 + "<a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/002-componer.png' ></button></a>"
                                 + "<a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/003-borrar.png' ></button></a>"
-                            
                                 + "</td>");
                     out.print("</tr>");
                     pos++;
