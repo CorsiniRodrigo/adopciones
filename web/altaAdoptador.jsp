@@ -1,7 +1,7 @@
 <%-- 
     Document   : altaAdoptador
     Created on : 09-abr-2018, 18:42:00
-    Author     : usuario
+    Author     : Corsini
 --%>
 
 <%@page import="Utilidades.Metodos"%>
@@ -24,7 +24,8 @@
             <li><a href="https://es-es.facebook.com/ADOPTA-EN-ESPA%C3%91A-311579258852821/">Contacto</a></li>
         </ul>
 
-        <h1>Alta Adoptador</h1>
+        <h1>Alta Adoptador</h1>    
+        <fieldset>
         <%
             String mensaje = (String) request.getAttribute("mensaje");
             if (mensaje != null) {
@@ -39,7 +40,7 @@
                 }
             }
         %>
-        <fieldset>
+
             <form method="get" action="ServletAltaAdoptador">
                 <label>   Nombre: </label><br>
                 <input type="text" name="nombre" value="<%=Metodos.convertiNullStringVacio(request.getParameter("nombre"))%>"><br>

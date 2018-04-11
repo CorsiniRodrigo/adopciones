@@ -36,26 +36,52 @@ public class ServletAltaAdoptador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        Gestion gestion = new Gestion();
-        Adoptador adoptador = new Adoptador();
-        adoptador.setDni(request.getParameter("dni"));
-        adoptador.setHijo(request.getParameter("hijo"));
-        adoptador.setJardin(request.getParameter("jardin"));
-        adoptador.setNombre(request.getParameter("nombre"));
-        adoptador.setOtrosPerros(Integer.parseInt(request.getParameter("otrosperros")));
-        try {
-            gestion.insertarAdoptador(adoptador);
-            request.setAttribute("mensaje", "Insercíon Correcta");
-            request.getRequestDispatcher("listaAdoptador.jsp").forward(request, response);
-        } catch (ExcepcionAdopciones ex) {
+        ArrayList<String> ListaErrores = validarFormulario(request);
+        if (ListaErrores == null) {
+            Gestion gestion = new Gestion();
+            Adoptador adoptador = new Adoptador();
+            adoptador.setDni(request.getParameter("dni"));
+            adoptador.setHijo(request.getParameter("hijo"));
+            adoptador.setJardin(request.getParameter("jardin"));
+            adoptador.setNombre(request.getParameter("nombre"));
+            adoptador.setOtrosPerros(Integer.parseInt(request.getParameter("otrosperros")));
+            try {
+                gestion.insertarAdoptador(adoptador);
+                request.setAttribute("mensaje", "Insercíon Correcta");
+                request.getRequestDispatcher("listaAdoptador.jsp").forward(request, response);
+            } catch (ExcepcionAdopciones ex) {
+                request.setAttribute("mensaje", "La insercion ha sido fallida");
+                ListaErrores = new ArrayList();
+                ListaErrores.add(ex.getMensajeErrorUsuario());
+                request.setAttribute("ListaErrores", ListaErrores);
+                request.getRequestDispatcher("altaAdoptador.jsp").forward(request, response);
+                // Logger.getLogger(ServletAltaPerro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
             request.setAttribute("mensaje", "La insercion ha sido fallida");
-            ArrayList<String> ListaErrores = new ArrayList();
-            ListaErrores.add(ex.getMensajeErrorUsuario());
             request.setAttribute("ListaErrores", ListaErrores);
             request.getRequestDispatcher("altaAdoptador.jsp").forward(request, response);
-            // Logger.getLogger(ServletAltaPerro.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private ArrayList<String> validarFormulario(HttpServletRequest request) {
+
+        ArrayList<String> ListaErrores = new ArrayList();
+
+        if (request.getParameter("dni").length() != 9) {
+            ListaErrores.add("El Dni debe tener una longitud de 9 digitos");
+        }
+          if (request.getParameter("nombre").length() >20) {
+            ListaErrores.add("El Nombre debe tener una longitud inferior a 20 digitos");
+        }
+
+
+        if (ListaErrores.size() == 0) {
+            return null;
+        } else {
+            return ListaErrores;
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

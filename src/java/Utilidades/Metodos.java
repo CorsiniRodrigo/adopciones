@@ -11,7 +11,6 @@ package Utilidades;
  */
 public class Metodos {
 
-
     public static String convertirSNMF(String letra) {
 
         switch (letra) {
@@ -48,6 +47,22 @@ public class Metodos {
 
         return cadena;
 
+    }
+
+    /**
+     * Método que valida si un string contiene un dato de tipo int válido
+     *
+     * @param s String a validar si contiene un dato de tipo int válido
+     * @return true si el string contiene un dato de tipo int válido o false en
+     * caso contrario
+     */
+    public static boolean esEntero(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
 
 }
