@@ -14,7 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="css.css">
+        <link rel="stylesheet" type="text/css" href="estilos/css.css">
         <title>JSP Page</title>
     </head>
 
@@ -26,6 +26,12 @@
             <li><a href="https://es-es.facebook.com/ADOPTA-EN-ESPA%C3%91A-311579258852821/">Contacto</a></li>
 
         </ul><br>
+        <%
+            String mensaje = (String) request.getAttribute("mensaje");
+            if (mensaje != null) {
+                out.println("<p style=color:green>" + mensaje + "</p>");
+            }
+        %>
         <table id="tabla">
             <tr>
                 <th>Chip</th>
@@ -50,13 +56,13 @@
                     out.print("<td>" + perro.getNombre() + "</td>");
                     out.print("<td>" + perro.getColor() + "</td>");
                     out.print("<td>" + perro.getRaza() + "</td>");
-                    out.print("<td>" +metodos.convertiNullStringVacio(perro.getAmo().getNombre())+" - "+ metodos.convertiNullStringVacio(perro.getAmo().getDni()) + "</td>");
+                    out.print("<td>" + metodos.convertiNullStringVacio(perro.getAmo().getNombre()) + " - " + metodos.convertiNullStringVacio(perro.getAmo().getDni()) + "</td>");
                     out.print("<td>" + metodos.convertirSNMF(perro.getPeligroso()) + "</td>");
                     out.print("<td>" + metodos.convertirSNMF(perro.getSexo()) + "</td>");
-                      out.print("<td><a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/001-lupa.png' ></button></a>"
-                                + "<a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/002-componer.png' ></button></a>"
-                                + "<a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/003-borrar.png' ></button></a>"
-                                + "</td>");
+                    out.print("<td><a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/001-lupa.png' ></button></a>"
+                            + "<a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/002-componer.png' ></button></a>"
+                            + "<a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/003-borrar.png' ></button></a>"
+                            + "</td>");
                     out.print("</tr>");
                     pos++;
 

@@ -11,6 +11,7 @@ import adopciones.Gestion;
 import adopciones.Perro;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -40,7 +41,6 @@ public class ServletAltaPerro extends HttpServlet {
         Adoptador adoptador = new Adoptador();
         adoptador.setAdoptadorid(Integer.parseInt(request.getParameter("amo")));
         Perro perro = new Perro();
-        perro.setIdPerro(67);
         perro.setNombre(request.getParameter("nombre"));
         perro.setChip(Integer.parseInt(request.getParameter("chip")));
         perro.setColor(request.getParameter("color"));
@@ -48,11 +48,15 @@ public class ServletAltaPerro extends HttpServlet {
         perro.setAmo(adoptador);
         perro.setPeligroso(request.getParameter("peligroso"));
         perro.setSexo(request.getParameter("sexo"));
-        
+        request.setAttribute("mensaje", "Insercíon Correcta");
         try {
             gestion.insertarPerro(perro);
             request.getRequestDispatcher("listaPerros.jsp").forward(request, response);
         } catch (ExcepcionAdopciones ex) {
+            request.setAttribute("mensaje", "La insercion ha sido fallida");
+            ArrayList<String> ListaErrores = new ArrayList();
+            ListaErrores.add(ex.getMensajeErrorUsuario());
+            request.setAttribute("ListaErrores", ListaErrores);
             // Logger.getLogger(ServletAltaPerro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

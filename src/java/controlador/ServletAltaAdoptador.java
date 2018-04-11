@@ -10,6 +10,7 @@ import adopciones.ExcepcionAdopciones;
 import adopciones.Gestion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -36,20 +37,25 @@ public class ServletAltaAdoptador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-           Gestion gestion =new Gestion();
-            Adoptador adoptador=new Adoptador();
-            adoptador.setDni(request.getParameter("dni"));
-            adoptador.setHijo(request.getParameter("hijo"));
-            adoptador.setJardin(request.getParameter("jardin"));
-            adoptador.setNombre(request.getParameter("nombre"));
-            adoptador.setOtrosPerros(Integer.parseInt(request.getParameter("otrosperros")));
+        Gestion gestion = new Gestion();
+        Adoptador adoptador = new Adoptador();
+        adoptador.setDni(request.getParameter("dni"));
+        adoptador.setHijo(request.getParameter("hijo"));
+        adoptador.setJardin(request.getParameter("jardin"));
+        adoptador.setNombre(request.getParameter("nombre"));
+        adoptador.setOtrosPerros(Integer.parseInt(request.getParameter("otrosperros")));
         try {
             gestion.insertarAdoptador(adoptador);
+            request.setAttribute("mensaje", "Insercíon Correcta");
             request.getRequestDispatcher("listaAdoptador.jsp").forward(request, response);
         } catch (ExcepcionAdopciones ex) {
-           // Logger.getLogger(ServletAltaAdoptador.class.getName()).log(Level.SEVERE, null, ex);
+            request.setAttribute("mensaje", "La insercion ha sido fallida");
+            ArrayList<String> ListaErrores = new ArrayList();
+            ListaErrores.add(ex.getMensajeErrorUsuario());
+            request.setAttribute("ListaErrores", ListaErrores);
+            request.getRequestDispatcher("altaAdoptador.jsp").forward(request, response);
+            // Logger.getLogger(ServletAltaPerro.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
