@@ -18,7 +18,7 @@
 
     <body>
        	<h1><img src="Imagenes/encabezado.jpg" ></h1>
-        <ul>
+        <ul >
             <li><a href="listaPerros.jsp">Perros</a></li>
             <li><a href="listaAdoptador.jsp">Familias</a></li>
             <li><a href="https://es-es.facebook.com/ADOPTA-EN-ESPA%C3%91A-311579258852821/">Contacto</a></li>
@@ -30,19 +30,22 @@
             String mensaje = (String) request.getAttribute("mensaje");
             if (mensaje != null) {
                 if (request.getAttribute("ListaErrores") != null) {
-                    out.println("<p style=color:red>" + mensaje + "</p>");
+                    out.println("<ol>");
+                    out.println("<li style=color:red>" + mensaje + "</li>");
                     ArrayList<String> ListaErrores = (ArrayList) request.getAttribute("ListaErrores");
                     for (String o : ListaErrores) {
-                        out.println("<p style=color:red>" + o + "</p>");
+                        out.println("<li style=color:red>" + o + "</li>");
                     }
                 } else {
-                    out.println("<p style=color:green>" + mensaje + "</p>");
+                    out.println("<li style=color:green>" + mensaje + "</li>");
                 }
-            }
+            out.println("</ol>");
+             out.println(" <br> ");
+            out.println(" <br> ");}
         %>
-
+ <br> 
             <form method="get" action="ServletAltaAdoptador">
-                <label>   Nombre: </label><br>
+              <label>   Nombre: </label><br>
                 <input type="text" name="nombre" value="<%=Metodos.convertiNullStringVacio(request.getParameter("nombre"))%>"><br>
                 <label>  DNI: </label><br>
                 <input type="text" name="dni" value="<%=Metodos.convertiNullStringVacio(request.getParameter("dni"))%>"><br>
@@ -75,7 +78,7 @@
                     }%>>No</option>
                 </select><br>
                 <label>  Otros Perros: </label><br>
-                <input type="text" name="otrosperros" value="<%=Metodos.convertiNullStringVacio(request.getParameter("otrosperros"))%>"><br>
+                <input id="datosnumero"type="number" name="otrosperros" value="<%=Metodos.convertiNullStringVacio(request.getParameter("otrosperros"))%>"><br>
                 <input type="submit" value="Acptar">
                 <a href="listaPerros.jsp"><input type="button" value="Cancelar"></a>
             </form>

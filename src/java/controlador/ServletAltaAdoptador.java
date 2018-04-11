@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import Utilidades.Metodos;
 import adopciones.Adoptador;
 import adopciones.ExcepcionAdopciones;
 import adopciones.Gestion;
@@ -73,6 +74,9 @@ public class ServletAltaAdoptador extends HttpServlet {
         }
           if (request.getParameter("nombre").length() >20) {
             ListaErrores.add("El Nombre debe tener una longitud inferior a 20 digitos");
+        }
+            if (Metodos.esEntero(request.getParameter("otrosperros"))==false) {
+            ListaErrores.add("Si tiene Otros Perros debes introducir el numero de animales que tiene en casa ");
         }
 
 
