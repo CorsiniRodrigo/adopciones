@@ -1,0 +1,102 @@
+<%-- 
+    Document   : modificarAdoptador
+    Created on : 12-abr-2018, 14:59:02
+    Author     : usuario
+--%>
+
+<%@page import="adopciones.Adoptador"%>
+<%@page import="adopciones.Gestion"%>
+<%@page import="Utilidades.Metodos"%>
+<%@page import="java.util.ArrayList"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="estilos/css.css">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Modificar Adotpador</h1>
+        <fieldset>
+            <%
+                String mensaje = (String) request.getAttribute("mensaje");
+                if (mensaje != null) {
+                    if (request.getAttribute("ListaErrores") != null) {
+                        out.println("<ol>");
+                        out.println("<li style=color:red>" + mensaje + "</li>");
+                        ArrayList<String> ListaErrores = (ArrayList) request.getAttribute("ListaErrores");
+                        for (String o : ListaErrores) {
+                            out.println("<li style=color:red>" + o + "</li>");
+                        }
+                    } else {
+                        out.println("<li style=color:green>" + mensaje + "</li>");
+                    }
+                    out.println("</ol>");
+                    out.println(" <br> ");
+                    out.println(" <br> ");
+                }
+            %>
+
+            <%
+                Adoptador adoptador;
+                if (request.getParameter("dni") == null) {
+                    Gestion gestion = new Gestion();
+                    adoptador = gestion.leerAdoptador(Integer.parseInt(request.getParameter("adoptadorId")));
+                }else{
+                adoptador = new Adoptador();
+                adoptador.setAdoptadorid(Integer.parseInt(request.getParameter("adoptadorId")));
+                adoptador.setDni(request.getParameter("dni"));
+                adoptador.setHijo(request.getParameter("hijo"));
+                adoptador.setJardin(request.getParameter("jardin"));
+                adoptador.setNombre(request.getParameter("nombre"));
+                adoptador.setOtrosPerros(Integer.parseInt(request.getParameter("otrosperros")));}
+
+            %>
+            <br> 
+            <form method="post" action="ServletModificarAdoptador">
+                <input type="hidden" name="adoptadorId" value="<%=adoptador.getAdoptadorid()%>">
+                <label>   Nombre: </label><br>
+                <input type="text" name="nombre" value="<%= adoptador.getNombre()%>"><br>
+                <label>  DNI: </label><br>
+                <input type="text" requiered name="dni" value="<%=adoptador.getDni()%>"><br>
+                <label>  Jardin: </label><br>
+                <select name="jardin">
+                    <option></option>
+                    <option value="s"<%
+
+                        if (Metodos.convertirSNMF(adoptador.getJardin()).equals("s")) {
+
+                            %>selected<%} else if (Metodos.convertirSNMF(adoptador.getJardin()).equals("n"))  
+                            %>>Si</option>
+                    <option value="n"<%{
+                            %>selected<%}
+                            %>>No</option>
+                </select><br>
+                <label>  Hijos: </label><br>
+                <select name="hijo">
+                    <option></option>
+                    <option value="s"<%
+                        if (Metodos.convertirSNMF(adoptador.getHijo()).equals("s")) {
+
+                            %>selected<%} else if (Metodos.convertirSNMF(adoptador.getHijo()).equals("n")) {
+                            %>>Si</option>
+                    <option value="n"<%
+                            %>selected<%}
+                            %>>No</option>
+                </select><br>
+                <label>  Otros Perros: </label><br>
+                <input id="datosnumero"type="number" name="otrosperros" value="<%= adoptador.getOtrosPerros()%>"><br>
+                <input type="submit" value="Acptar">
+                <a href="listaAdoptador.jsp"><input type="button" value="Cancelar"></a>
+            </form>
+        </fieldset>
+
+
+
+
+
+    </body>
+</html>
+
+</html>

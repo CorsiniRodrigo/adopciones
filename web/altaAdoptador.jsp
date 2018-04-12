@@ -26,61 +26,62 @@
 
         <h1>Alta Adoptador</h1>    
         <fieldset>
-        <%
-            String mensaje = (String) request.getAttribute("mensaje");
-            if (mensaje != null) {
-                if (request.getAttribute("ListaErrores") != null) {
-                    out.println("<ol>");
-                    out.println("<li style=color:red>" + mensaje + "</li>");
-                    ArrayList<String> ListaErrores = (ArrayList) request.getAttribute("ListaErrores");
-                    for (String o : ListaErrores) {
-                        out.println("<li style=color:red>" + o + "</li>");
+            <%
+                String mensaje = (String) request.getAttribute("mensaje");
+                if (mensaje != null) {
+                    if (request.getAttribute("ListaErrores") != null) {
+                        out.println("<ol>");
+                        out.println("<li style=color:red>" + mensaje + "</li>");
+                        ArrayList<String> ListaErrores = (ArrayList) request.getAttribute("ListaErrores");
+                        for (String o : ListaErrores) {
+                            out.println("<li style=color:red>" + o + "</li>");
+                        }
+                    } else {
+                        out.println("<li style=color:green>" + mensaje + "</li>");
                     }
-                } else {
-                    out.println("<li style=color:green>" + mensaje + "</li>");
+                    out.println("</ol>");
+                    out.println(" <br> ");
+                    out.println(" <br> ");
                 }
-            out.println("</ol>");
-             out.println(" <br> ");
-            out.println(" <br> ");}
-        %>
- <br> 
-            <form method="get" action="ServletAltaAdoptador">
-              <label>   Nombre: </label><br>
-                <input type="text" name="nombre" value="<%=Metodos.convertiNullStringVacio(request.getParameter("nombre"))%>"><br>
+            %>
+            <br> 
+            <form method="post" action="ServletAltaAdoptador">
+                <label>   Nombre: </label><br>
+                <input type="text" name="nombre"   value="<%=Metodos.convertiNullStringVacio(request.getParameter("nombre"))%>" required><br>
                 <label>  DNI: </label><br>
-                <input type="text" name="dni" value="<%=Metodos.convertiNullStringVacio(request.getParameter("dni"))%>"><br>
+                <input type="text" requiered name="dni" value="<%=Metodos.convertiNullStringVacio(request.getParameter("dni"))%>" required><br>
                 <label>  Jardin: </label><br>
                 <select name="jardin">
                     <option></option>
-                     <option value="s"<%
-                        if(request.getParameter("jardin")!=null){
-                            if(request.getParameter("jardin").equals("s")){
-                    %>selected<%}
-                    }%>>Si</option>
+                    <option value="s"<%
+                        if (request.getParameter("jardin") != null) {
+                            if (request.getParameter("jardin").equals("s")) {
+                            %>selected<%}
+                        }%>>Si</option>
                     <option value="n"<%
-                        if(request.getParameter("jardin")!=null){
-                            if(request.getParameter("jardin").equals("n")){
-                    %>selected<%}
-                    }%>>No</option>
+                        if (request.getParameter("jardin") != null) {
+                            if (request.getParameter("jardin").equals("n")) {
+                            %>selected<%}
+                        }%>>No</option>
                 </select><br>
                 <label>  Hijos: </label><br>
                 <select name="hijo">
-                     <option></option>
+                    <option></option>
                     <option value="s"<%
-                        if(request.getParameter("hijo")!=null){
-                            if(request.getParameter("hijo").equals("s")){
-                    %>selected<%}
-                    }%>>Si</option>
+                        if (request.getParameter("hijo") != null) {
+                            if (request.getParameter("hijo").equals("s")) {
+                            %>selected<%}
+                        }%>>Si</option>
                     <option value="n"<%
-                        if(request.getParameter("hijo")!=null){
-                            if(request.getParameter("hijo").equals("n")){
-                    %>selected<%}
-                    }%>>No</option>
+                        if (request.getParameter("hijo") != null) {
+                            if (request.getParameter("hijo").equals("n")) {
+                            %>selected<%}
+                        }%>>No</option>
                 </select><br>
                 <label>  Otros Perros: </label><br>
                 <input id="datosnumero"type="number" name="otrosperros" value="<%=Metodos.convertiNullStringVacio(request.getParameter("otrosperros"))%>"><br>
                 <input type="submit" value="Acptar">
-                <a href="listaPerros.jsp"><input type="button" value="Cancelar"></a>
+                <a href="listaAdoptador.jsp"><input type="button" value="Cancelar"></a>
             </form>
         </fieldset>
 

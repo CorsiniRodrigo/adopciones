@@ -63,8 +63,9 @@
                     out.print("<td>" + metodos.convertirSNMF(adoptador.getJardin()) + "</td>");
                     out.print("<td>" + metodos.convertirSNMF(adoptador.getHijo()) + "</td>");
                     out.print("<td>" + adoptador.getOtrosPerros() + "</td>");
-                    out.print("<td><a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/001-lupa.png' ></button></a>"
-                            + "<a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/002-componer.png' ></button></a>"
+                    out.print("<td>"
+                            + "<a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/001-lupa.png' ></button></a>"
+                            + "<a href='modificarAdoptador.jsp?adoptadorId="+adoptador.getAdoptadorid()+"'><button class='btn'><img src='Iconos/002-componer.png' ></button></a>"
                             + "<a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/003-borrar.png' ></button></a>"
                             + "</td>");
                     out.print("</tr>");
