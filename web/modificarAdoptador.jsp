@@ -43,14 +43,15 @@
                 if (request.getParameter("dni") == null) {
                     Gestion gestion = new Gestion();
                     adoptador = gestion.leerAdoptador(Integer.parseInt(request.getParameter("adoptadorId")));
-                }else{
-                adoptador = new Adoptador();
-                adoptador.setAdoptadorid(Integer.parseInt(request.getParameter("adoptadorId")));
-                adoptador.setDni(request.getParameter("dni"));
-                adoptador.setHijo(request.getParameter("hijo"));
-                adoptador.setJardin(request.getParameter("jardin"));
-                adoptador.setNombre(request.getParameter("nombre"));
-                adoptador.setOtrosPerros(Integer.parseInt(request.getParameter("otrosperros")));}
+                } else {
+                    adoptador = new Adoptador();
+                    adoptador.setAdoptadorid(Integer.parseInt(request.getParameter("adoptadorId")));
+                    adoptador.setDni(request.getParameter("dni"));
+                    adoptador.setHijo(request.getParameter("hijo"));
+                    adoptador.setJardin(request.getParameter("jardin"));
+                    adoptador.setNombre(request.getParameter("nombre"));
+                    adoptador.setOtrosPerros(Integer.parseInt(request.getParameter("otrosperros")));
+                }
 
             %>
             <br> 
@@ -61,30 +62,51 @@
                 <label>  DNI: </label><br>
                 <input type="text" requiered name="dni" value="<%=adoptador.getDni()%>"><br>
                 <label>  Jardin: </label><br>
-                <select name="jardin">
+                <%--   <select name="jardin">
                     <option></option>
-                    <option value="s"<%
-
-                        if (Metodos.convertirSNMF(adoptador.getJardin()).equals("s")) {
-
-                            %>selected<%} else if (Metodos.convertirSNMF(adoptador.getJardin()).equals("n"))  
-                            %>>Si</option>
-                    <option value="n"<%{
-                            %>selected<%}
-                            %>>No</option>
-                </select><br>
+                    <option value="s" >Si</option>
+                    <option value="n"> No</option>
+                </select><br>--%>
+                
+                  <input type="radio" name="jardin" value="s"<%
+                    if (Metodos.convertirSNMF(adoptador.getJardin()).equals("Si")) {
+                       %>checked<%}
+                       %>> Si<br>
+                <input type="radio" name="jardin" value="n"<%
+                    if (Metodos.convertirSNMF(adoptador.getJardin()).equals("No")) {
+                       %>checked<%}
+                       %>> No<br>
+                
+                
+                
+                
                 <label>  Hijos: </label><br>
-                <select name="hijo">
+                <%--   <select name="hijo">
                     <option></option>
                     <option value="s"<%
-                        if (Metodos.convertirSNMF(adoptador.getHijo()).equals("s")) {
+                        if (Metodos.convertirSNMF(adoptador.getHijo()).equals("Si")) {
 
-                            %>selected<%} else if (Metodos.convertirSNMF(adoptador.getHijo()).equals("n")) {
+                            %>selected<%}
                             %>>Si</option>
                     <option value="n"<%
+                        if (Metodos.convertirSNMF(adoptador.getHijo()).equals("No")) {
                             %>selected<%}
                             %>>No</option>
-                </select><br>
+                </select><br>  --%>
+
+
+                <input type="radio" name="hijo" value="s"<%
+                    if (Metodos.convertirSNMF(adoptador.getHijo()).equals("Si")) {
+                       %>checked<%}
+                       %>> Si<br>
+                <input type="radio" name="hijo" value="n"<%
+                    if (Metodos.convertirSNMF(adoptador.getHijo()).equals("No")) {
+                       %>checked<%}
+                       %>> No<br>
+
+
+
+
                 <label>  Otros Perros: </label><br>
                 <input id="datosnumero"type="number" name="otrosperros" value="<%= adoptador.getOtrosPerros()%>"><br>
                 <input type="submit" value="Acptar">

@@ -18,11 +18,7 @@
 
     <body>
        	<h1><img src="Imagenes/encabezado.jpg" ></h1>
-        <ul >
-            <li><a href="listaPerros.jsp">Perros</a></li>
-            <li><a href="listaAdoptador.jsp">Familias</a></li>
-            <li><a href="https://es-es.facebook.com/ADOPTA-EN-ESPA%C3%91A-311579258852821/">Contacto</a></li>
-        </ul>
+   
 
         <h1>Alta Adoptador</h1>    
         <fieldset>
@@ -51,33 +47,11 @@
                 <label>  DNI: </label><br>
                 <input type="text" requiered name="dni" value="<%=Metodos.convertiNullStringVacio(request.getParameter("dni"))%>" required><br>
                 <label>  Jardin: </label><br>
-                <select name="jardin">
-                    <option></option>
-                    <option value="s"<%
-                        if (request.getParameter("jardin") != null) {
-                            if (request.getParameter("jardin").equals("s")) {
-                            %>selected<%}
-                        }%>>Si</option>
-                    <option value="n"<%
-                        if (request.getParameter("jardin") != null) {
-                            if (request.getParameter("jardin").equals("n")) {
-                            %>selected<%}
-                        }%>>No</option>
-                </select><br>
-                <label>  Hijos: </label><br>
-                <select name="hijo">
-                    <option></option>
-                    <option value="s"<%
-                        if (request.getParameter("hijo") != null) {
-                            if (request.getParameter("hijo").equals("s")) {
-                            %>selected<%}
-                        }%>>Si</option>
-                    <option value="n"<%
-                        if (request.getParameter("hijo") != null) {
-                            if (request.getParameter("hijo").equals("n")) {
-                            %>selected<%}
-                        }%>>No</option>
-                </select><br>
+                <input type="radio" name="jardin" value="s"> Si<br>
+                <input type="radio" name="jardin" value="n"> No<br>
+                <label>  Hijos: </label><br> 
+                <input type="radio" name="hijo" value="s"> Si<br>
+                <input type="radio" name="hijo" value="n"> No<br>
                 <label>  Otros Perros: </label><br>
                 <input id="datosnumero"type="number" name="otrosperros" value="<%=Metodos.convertiNullStringVacio(request.getParameter("otrosperros"))%>"><br>
                 <input type="submit" value="Acptar">

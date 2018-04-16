@@ -38,7 +38,7 @@
                 <input type="text" name="raza"><br>
                 <label>  Amo:</label><br>
                 <select name="amo">
-                    <option value=' + o.getAdoptadorid() + '> </option>
+                    <option value=' '> </option>
                     <%
                         Gestion gestion = new Gestion();
                         ArrayList<Adoptador> listaAdoptador = gestion.leerAdoptadores();
@@ -49,16 +49,16 @@
 
                     %>
                 </select><br>
-                <label>Peligroso:</label><br>
-                <select name="peligroso">
-                    <option value="S">Si</option>
-                    <option value="N">No</option>
-                </select><br>
+ 
+                 
+                <label>Peligroso:</label><br> 
+                <input type="radio" name="peligroso" value="S"> Si<br>
+                <input type="radio" name="peligroso" value="N"> No<br>
+
                 <label>  Sexo:</label><br>
-                <select name="sexo">
-                    <option value="m">Macho</option>
-                    <option value="f">Hembra</option>
-                </select><br>
+
+                <input type="radio" name="peligroso" value="m"> Masculino<br>
+                <input type="radio" name="peligroso" value="f"> Femenino<br>
                 <input type="submit" value="Acptar">
                 <a href="listaPerros.jsp"><input type="button" value="Cancelar"></a>
             </form>

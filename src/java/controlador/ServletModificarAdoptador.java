@@ -61,7 +61,7 @@ public class ServletModificarAdoptador extends HttpServlet {
         } else {
             request.setAttribute("mensaje", "La Modificacion ha sido fallida");
             request.setAttribute("ListaErrores", ListaErrores);
-            request.getRequestDispatcher("altaAdoptador.jsp").forward(request, response);
+            request.getRequestDispatcher("modificarAdoptador.jsp").forward(request, response);
         }
     }
     

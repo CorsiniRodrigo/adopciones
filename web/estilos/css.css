@@ -98,6 +98,10 @@ fieldset{
     
     
 }
+input[type=radio] {
+ text-align: center;
+ margin-left: 40%;
+}
 input[type=number] {
     width: 30%;
     padding: 12px;
