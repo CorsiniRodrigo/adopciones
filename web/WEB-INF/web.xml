@@ -16,6 +16,14 @@
         <servlet-name>ServletBorrarAdoptador</servlet-name>
         <servlet-class>controlador.ServletBorrarAdoptador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletMostrarAdoptador</servlet-name>
+        <servlet-class>controlador.ServletMostrarAdoptador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarPerro</servlet-name>
+        <servlet-class>controlador.ModificarPerro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletAltaPerro</servlet-name>
         <url-pattern>/ServletAltaPerro</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>ServletBorrarAdoptador</servlet-name>
         <url-pattern>/ServletBorrarAdoptador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletMostrarAdoptador</servlet-name>
+        <url-pattern>/ServletMostrarAdoptador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarPerro</servlet-name>
+        <url-pattern>/ModificarPerro</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

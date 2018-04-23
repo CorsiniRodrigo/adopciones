@@ -1,6 +1,6 @@
 <%-- 
-    Document   : borraradoptador
-    Created on : 18-abr-2018, 18:42:25
+    Document   : mostraradoptador
+    Created on : 22-abr-2018, 21:09:57
     Author     : usuario
 --%>
 
@@ -11,6 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<html>
     <head>
                 <link rel="stylesheet" type="text/css" href="estilos/css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,7 +19,7 @@
     </head>
     <body>
     <body>
-        <h1>Borrar Adotpador</h1>
+        <h1>Mostrar Adotpador</h1>
         <fieldset>
             <%
                 String mensaje = (String) request.getAttribute("mensaje");
@@ -47,18 +48,14 @@
 
             %>
             <br> 
-            <form method="post" action="ServletBorrarAdoptador">
+            <form method="post"/>  
                 <input type="hidden" name="adoptadorId" value="<%=adoptador.getAdoptadorid()%>">
                 <label>   Nombre: </label><br>
                 <input type="text" name="nombre" value="<%= adoptador.getNombre()%>" disabled><br>
                 <label>  DNI: </label><br>
                 <input type="text" requiered name="dni" value="<%=adoptador.getDni()%>" disabled><br>
                 <label>  Jardin: </label><br>
-                <%--   <select name="jardin">
-                    <option></option>
-                    <option value="s" >Si</option>
-                    <option value="n"> No</option>
-                </select><br>--%>
+          
 
                <%
                     if (Metodos.convertirSNMF(adoptador.getJardin()).equals("Si")) {
@@ -84,8 +81,8 @@
 
                 <label>  Otros Perros: </label><br>
                 <input id="datosnumero"type="number" name="otrosperros" value="<%= adoptador.getOtrosPerros()%>" disabled><br>
-                <input type="submit" value="Eliminar">
-                <a href="listaAdoptador.jsp"><input type="button" value="Cancelar"></a>
+              <!-- <input type="submit" value="Eliminar">-->
+                <a href="listaAdoptador.jsp"><input type="button" value="Atras"></a>
             </form>
         </fieldset>
 

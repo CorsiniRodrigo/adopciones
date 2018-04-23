@@ -77,7 +77,7 @@ public class ServletModificarAdoptador extends HttpServlet {
         }
           
               if (request.getParameter("dni") == null) {
-            ListaErrores.add("Aceso no Autorizado");
+                  ListaErrores.add("Aceso no Autorizado");
         }
           if (request.getParameter("nombre")== null) {
             ListaErrores.add("Acceso no Autorizado");
