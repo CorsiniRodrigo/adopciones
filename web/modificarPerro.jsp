@@ -86,8 +86,8 @@
 
                 <label>  Sexo:</label><br>
 
-                <input type="radio" name="peligroso" value="m"> Si<br>
-                <input type="radio" name="peligroso" value="f"> No<br>
+                <input type="radio" name="sexo" value="m"> Si<br>
+                <input type="radio" name="sexo" value="f"> No<br>
 
                 <input type="submit" value="Acptar">
                 <a href="listaPerros.jsp"><input type="button" value="Cancelar"></a>

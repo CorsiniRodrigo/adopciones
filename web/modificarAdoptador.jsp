@@ -58,17 +58,17 @@
             <form method="post" action="ServletModificarAdoptador">
                 <input type="hidden" name="adoptadorId" value="<%=adoptador.getAdoptadorid()%>">
                 <label>   Nombre: </label><br>
-                <input type="text" name="nombre" value="<%= adoptador.getNombre()%>"><br>
+                <input type="text" name="nombre" value="<%= adoptador.getNombre()%>" required><br>
                 <label>  DNI: </label><br>
-                <input type="text" requiered name="dni" value="<%=adoptador.getDni()%>"><br>
+                <input type="text" name = "dni" value="<%=adoptador.getDni()%>" required><br>
                 <label>  Jardin: </label><br>
                 <%--   <select name="jardin">
                     <option></option>
                     <option value="s" >Si</option>
                     <option value="n"> No</option>
                 </select><br>--%>
-                
-                  <input type="radio" name="jardin" value="s"<%
+
+                <input type="radio" name="jardin" value="s"<%
                     if (Metodos.convertirSNMF(adoptador.getJardin()).equals("Si")) {
                        %>checked<%}
                        %>> Si<br>
@@ -76,39 +76,26 @@
                     if (Metodos.convertirSNMF(adoptador.getJardin()).equals("No")) {
                        %>checked<%}
                        %>> No<br>
-                
-                
-                
-                
+
+
+
+
                 <label>  Hijos: </label><br>
-                <%--   <select name="hijo">
-                    <option></option>
-                    <option value="s"<%
-                        if (Metodos.convertirSNMF(adoptador.getHijo()).equals("Si")) {
-
-                            %>selected<%}
-                            %>>Si</option>
-                    <option value="n"<%
-                        if (Metodos.convertirSNMF(adoptador.getHijo()).equals("No")) {
-                            %>selected<%}
-                            %>>No</option>
-                </select><br>  --%>
-
 
                 <input type="radio" name="hijo" value="s"<%
-                    if (Metodos.convertirSNMF(adoptador.getHijo()).equals("Si")) {
+              if (Metodos.convertirSNMF(adoptador.getHijo()).equals("Si")) {
                        %>checked<%}
                        %>> Si<br>
                 <input type="radio" name="hijo" value="n"<%
                     if (Metodos.convertirSNMF(adoptador.getHijo()).equals("No")) {
-                       %>checked<%}
+                       %>checked<%} 
                        %>> No<br>
 
 
-
+ <%= adoptador.getOtrosPerros() %>
 
                 <label>  Otros Perros: </label><br>
-                <input id="datosnumero"type="number" name="otrosperros" value="<%= adoptador.getOtrosPerros()%>"><br>
+                <input id="datosnumero" type="number" name="otrosperros" value="<%= adoptador.getOtrosPerros() %>" ><br>
                 <input type="submit" value="Acptar">
                 <a href="listaAdoptador.jsp"><input type="button" value="Cancelar"></a>
             </form>

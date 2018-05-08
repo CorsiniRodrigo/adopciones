@@ -17,7 +17,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-    <body>
+    
         <h1>Borrar Adotpador</h1>
         <fieldset>
             <%

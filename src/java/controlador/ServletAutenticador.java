@@ -5,25 +5,20 @@
  */
 package controlador;
 
-import adopciones.Adoptador;
-import adopciones.ExcepcionAdopciones;
-import adopciones.Gestion;
-import adopciones.Perro;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author usuario
  */
-public class ModificarPerro extends HttpServlet {
+public class ServletAutenticador extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,44 +32,33 @@ public class ModificarPerro extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ArrayList listaerrores = null;
-        Perro perro = new Perro();
-        Gestion gestion = new Gestion();
-        try {
-            Adoptador adoptador = new Adoptador();
-            adoptador.setAdoptadorid(Integer.parseInt(request.getParameter("adoptador")));
-            perro.setAmo(adoptador);
-            perro.setChip(Integer.parseInt(request.getParameter("chip")));
-            perro.setColor(request.getParameter("color"));
-            perro.setIdPerro(Integer.parseInt(request.getParameter("idperro")));
-            perro.setNombre(request.getParameter("nombre"));
-            perro.setPeligroso(request.getParameter("peligroso"));
-            perro.setRaza(request.getParameter("raza"));
-            perro.setSexo(request.getParameter("sexo"));
-            gestion.modificarAPerro(perro.getIdPerro(), perro);
-        } catch (ExcepcionAdopciones ex) {
-            Logger.getLogger(ModificarPerro.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        try (PrintWriter out = response.getWriter()) {
+         ServletContext contexto = request.getServletContext();
+        String uE = contexto.getInitParameter("AdministradorEmergencia");
+        String cE = contexto.getInitParameter("ContrasennaEmergencia");
 
-    }
+        String u = request.getParameter("usuario");
+        String p = request.getParameter("contrasena");
 
-    public ArrayList<String> validarformulario(HttpServletRequest request) {
-        ArrayList<String> listaerrores = new ArrayList();
-        if (request.getParameter("color") == null) {
-
-            listaerrores.add("El color es Obligatorio");
-        }
-        if (request.getParameter("nombre") == null) {
-
-            listaerrores.add("El nombre es Obligatorio");
-        }
-        if (request.getParameter("raza") == null) {
-
-            listaerrores.add("La raza es Obligatoria");
-        }
+        if(uE.equals(u) && cE.equals(p)){
+            Object usuarioSesion = null;
+        //  Usuario usuarioSesion = new Usuario();
+        HttpSession sesion =request.getSession();
+        sesion.setAttribute("UsuarioSesion", usuarioSesion);
+        request.getRequestDispatcher("listaPerros.jsp").forward(request, response);
         
-
-        return listaerrores;
+        }
+        /*
+        Usuario usuario = new Usuario();
+        
+        
+        
+        
+        
+        
+        */
+        
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

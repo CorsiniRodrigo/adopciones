@@ -22,7 +22,11 @@
     </servlet>
     <servlet>
         <servlet-name>ModificarPerro</servlet-name>
-        <servlet-class>controlador.ModificarPerro</servlet-class>
+        <servlet-class>controlador.ServletModificarPerro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAutenticador</servlet-name>
+        <servlet-class>controlador.ServletAutenticador</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletAltaPerro</servlet-name>
@@ -48,9 +52,26 @@
         <servlet-name>ModificarPerro</servlet-name>
         <url-pattern>/ModificarPerro</url-pattern>
     </servlet-mapping>
+    <context-param>
+        <param-name>AdministradorEmergencia</param-name>
+        <param-value>corsini</param-value>
+    </context-param>
+    <context-param>
+        <param-name>ContrasennaEmergencia</param-name>
+        <param-value>kk</param-value>
+    </context-param>
+        <context-param>
+        <param-name>Piedepagina</param-name>
+        <param-value>Adopciones.es -Rodrigo Corsini Bolado </param-value>
+    </context-param>
+    <servlet-mapping>
+        <servlet-name>ServletAutenticador</servlet-name>
+        <url-pattern>/ServletAutenticador</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+ 
 </web-app>

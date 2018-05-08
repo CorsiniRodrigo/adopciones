@@ -24,7 +24,13 @@
             <li><a href="listaPerros.jsp">Perros</a></li>
             <li><a href="listaAdoptador.jsp">Familias</a></li>
             <li><a href="https://es-es.facebook.com/ADOPTA-EN-ESPA%C3%91A-311579258852821/">Contacto</a></li>
+<%
 
+    HttpSession sesion = request.getSession();
+   /* Usuario */ Object usuarioSesion =/*(Usuario)*/sesion.getAttribute("usuarioSesion");
+    
+    out.println("<li><a href='index.jsp'>usuario</a></li>");
+%>
         </ul><br>
         <%
             String mensaje = (String) request.getAttribute("mensaje");
@@ -70,6 +76,15 @@
 
             %> </table>
 
-
+         
+                <%
+                 ServletContext contexto = request.getServletContext();
+                 String texto = contexto.getInitParameter("Piedepagina");
+                 out.print("<footer>" + texto + "</footer>");
+                     
+                   
+                %>
+                
+           
     </body>
 </html>
