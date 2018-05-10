@@ -5,14 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link rel="stylesheet" type="text/css" href="estilos/css.css">
-        <title>JSP Page</title>
-    </head>
-    <body>
+<%@include file="Includes/cabecera.jsp" %>
         <form method="post" action="ServletAutenticador" >  
             <h1>Alta Usuario</h1>
             <label>Usuario:</label>
@@ -22,5 +15,4 @@
             <input type="submit" value="Acceder">  
             <a href = "altausuario.jsp">Nuevo Usuario</a>
         </form>
-    </body>
-</html>
+      <%@include file="Includes/footer.jsp" %>

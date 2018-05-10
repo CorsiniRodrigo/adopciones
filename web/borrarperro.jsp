@@ -1,12 +1,13 @@
 <%-- 
-    Document   : mostraradoptador
-    Created on : 22-abr-2018, 21:09:57
+    Document   : borrarperro
+    Created on : 10-may-2018, 14:42:53
     Author     : usuario
 --%>
 
 <%@page import="Utilidades.Metodos"%>
-<%@page import="adopciones.Gestion"%>
 <%@page import="adopciones.Adoptador"%>
+<%@page import="adopciones.Perro"%>
+<%@page import="adopciones.Gestion"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="Includes/cabecera.jsp" %>

@@ -9,22 +9,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="adopciones.Gestion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="estilos/css.css">
-        <title>Adoptadores</title>
-    </head>
-
-    <body>
-       	<h1><img src="Imagenes/encabezado.jpg" ></h1>
-        <ul>
-            <li><a href="listaPerros.jsp">Perros</a></li>
-            <li><a href="listaAdoptador.jsp">Familias</a></li>
-            <li><a href="https://es-es.facebook.com/ADOPTA-EN-ESPA%C3%91A-311579258852821/">Contacto</a></li>
-
-        </ul><br>
+<%@include file="Includes/cabecera.jsp" %>
         <%
             String mensaje = (String) request.getAttribute("mensaje");
             ArrayList<String> ListaErrores = (ArrayList) request.getAttribute("ListaErrores");
@@ -73,6 +58,4 @@
 
                 }
 
-            %> </table>
-    </body>
-</html>
+            %> </table>   <%@include file="Includes/footer.jsp" %>

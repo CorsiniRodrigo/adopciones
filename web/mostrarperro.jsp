@@ -1,16 +1,16 @@
 <%-- 
-    Document   : mostraradoptador
-    Created on : 22-abr-2018, 21:09:57
+    Document   : mostrarperro
+    Created on : 10-may-2018, 15:56:54
     Author     : usuario
 --%>
 
 <%@page import="Utilidades.Metodos"%>
-<%@page import="adopciones.Gestion"%>
 <%@page import="adopciones.Adoptador"%>
+<%@page import="adopciones.Perro"%>
+<%@page import="adopciones.Gestion"%>
 <%@page import="java.util.ArrayList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="Includes/cabecera.jsp" %>
-<h1>Borrar Perro</h1>
+<h1>Mostrar Perro</h1>
 <fieldset>
     <%
         String mensaje = (String) request.getAttribute("mensaje");
@@ -49,7 +49,7 @@
             perro.setSexo(request.getParameter("sexo"));
         }
     %>
-    <form method="get" action="ServletBorrarPerro">
+    <form>
         <input type="hidden" name="perroId" value="<%=perro.getIdPerro()%>">
         <label>   Chip: </label><br>
         <input type="text" name="chip"  value="<%=perro.getChip()%>" disabled ><br>
@@ -85,8 +85,8 @@
 
 
 
-        <input type="submit" value="Acptar">
-        <a href="listaPerros.jsp"><input type="button" value="Cancelar"></a>
+    
+        <a href="listaPerros.jsp"><input type="button" value="Volver"></a>
     </form>
 </fieldset>
 <%@include file="Includes/footer.jsp" %>

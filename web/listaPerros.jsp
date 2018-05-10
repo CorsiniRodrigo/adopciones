@@ -10,28 +10,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="adopciones.Gestion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="estilos/css.css">
-        <title>JSP Page</title>
-    </head>
 
-    <body>
-       	<h1><img src="Imagenes/encabezado.jpg" ></h1>
-        <ul>
-            <li><a href="listaPerros.jsp">Perros</a></li>
-            <li><a href="listaAdoptador.jsp">Familias</a></li>
-            <li><a href="https://es-es.facebook.com/ADOPTA-EN-ESPA%C3%91A-311579258852821/">Contacto</a></li>
-<%
+<%@include file="Includes/cabecera.jsp" %>
 
-    HttpSession sesion = request.getSession();
-   /* Usuario */ Object usuarioSesion =/*(Usuario)*/sesion.getAttribute("usuarioSesion");
-    
-    out.println("<li><a href='index.jsp'>usuario</a></li>");
-%>
-        </ul><br>
         <%
             String mensaje = (String) request.getAttribute("mensaje");
             if (mensaje != null) {
@@ -65,9 +46,9 @@
                     out.print("<td>" + metodos.convertiNullStringVacio(perro.getAmo().getNombre()) + " - " + metodos.convertiNullStringVacio(perro.getAmo().getDni()) + "</td>");
                     out.print("<td>" + metodos.convertirSNMF(perro.getPeligroso()) + "</td>");
                     out.print("<td>" + metodos.convertirSNMF(perro.getSexo()) + "</td>");
-                    out.print("<td><a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/001-lupa.png' ></button></a>"
+                    out.print("<td><a href='mostrarperro.jsp?perroId="+perro.getIdPerro()+"'><button class='btn'><img src='Iconos/001-lupa.png' ></button></a>"
                             + "<a href='modificarPerro.jsp?perroId="+perro.getIdPerro()+"'><button class='btn'><img src='Iconos/002-componer.png' ></button></a>"
-                            + "<a href='altaAdoptador.jsp'><button class='btn'><img src='Iconos/003-borrar.png' ></button></a>"
+                            + "<a href='borrarperro.jsp?perroId="+perro.getIdPerro()+"'<button class='btn'><img src='Iconos/003-borrar.png' ></button></a>"
                             + "</td>");
                     out.print("</tr>");
                     pos++;
@@ -75,16 +56,4 @@
                 }
 
             %> </table>
-
-         
-                <%
-                 ServletContext contexto = request.getServletContext();
-                 String texto = contexto.getInitParameter("Piedepagina");
-                 out.print("<footer>" + texto + "</footer>");
-                     
-                   
-                %>
-                
-           
-    </body>
-</html>
+            <%@include file="Includes/footer.jsp" %>

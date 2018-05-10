@@ -10,14 +10,7 @@
 <%@page import="adopciones.Adoptador"%>
 <%@page import="adopciones.Gestion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <link rel="stylesheet" type="text/css" href="estilos/css.css">
-        <title>JSP Page</title>
-    </head>
-    <body>
+<%@include file="Includes/cabecera.jsp" %>
         <h1>Modificar Perro</h1>
         <fieldset>
             <%
@@ -57,7 +50,7 @@
                     perro.setSexo(request.getParameter("sexo"));
                 }
             %>
-            <form method="get" action="ServletModificarPerro">
+            <form method="post" action="ServletModificarPerro">
                 <label>   Chip: </label><br>
                 <input type="text" name="chip"  value="<%=perro.getChip()%>"><br>
                 <label>  Nombre:</label><br>
@@ -80,18 +73,20 @@
                     %>
                 </select><br>
 
-                <label>Peligroso:</label><br> 
-                <input type="radio" name="peligroso" value="S"> Si<br>
-                <input type="radio" name="peligroso" value="N"> No<br>
+        <label>Peligroso:</label><br> 
+       
+        <input type="radio" name="peligroso" value="S" <%if (perro.getPeligroso().equals("S")) { %>checked<% }  %>> Si<br>
+      
+        <input type="radio" name="peligroso" value="N"<%if (perro.getPeligroso().equals("N")) { %>checked<% }  %>> No<br> 
 
-                <label>  Sexo:</label><br>
-
-                <input type="radio" name="sexo" value="m"> Si<br>
-                <input type="radio" name="sexo" value="f"> No<br>
+        <label>  Sexo:</label><br>
+      
+        <input type="radio" name="sexo" value="m" <%if (perro.getPeligroso().equals("S")) { %>checked<% }  %>> Si<br> 
+          
+        <input type="radio" name="sexo" value="f"<%if (perro.getPeligroso().equals("N")) { %>checked<% }  %>> No<br> 
 
                 <input type="submit" value="Acptar">
                 <a href="listaPerros.jsp"><input type="button" value="Cancelar"></a>
             </form>
         </fieldset>
-    </body>
-</html>
+       <%@include file="Includes/footer.jsp" %>

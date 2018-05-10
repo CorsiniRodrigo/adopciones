@@ -28,6 +28,10 @@
         <servlet-name>ServletAutenticador</servlet-name>
         <servlet-class>controlador.ServletAutenticador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletBorrarPerro</servlet-name>
+        <servlet-class>controlador.ServletBorrarPerro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletAltaPerro</servlet-name>
         <url-pattern>/ServletAltaPerro</url-pattern>
@@ -60,7 +64,7 @@
         <param-name>ContrasennaEmergencia</param-name>
         <param-value>kk</param-value>
     </context-param>
-        <context-param>
+    <context-param>
         <param-name>Piedepagina</param-name>
         <param-value>Adopciones.es -Rodrigo Corsini Bolado </param-value>
     </context-param>
@@ -68,10 +72,13 @@
         <servlet-name>ServletAutenticador</servlet-name>
         <url-pattern>/ServletAutenticador</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletBorrarPerro</servlet-name>
+        <url-pattern>/ServletBorrarPerro</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
- 
 </web-app>
