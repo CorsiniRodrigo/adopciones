@@ -39,7 +39,7 @@ public class ServletAltaPerro extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<String> ListaErrores = validarFormulario(request);
         if (ListaErrores == null) {
-            Gestion gestion = new Gestion();
+           try {        Gestion gestion = new Gestion();
             Adoptador adoptador = new Adoptador();
             adoptador.setAdoptadorid(Integer.parseInt(request.getParameter("amo")));
             Perro perro = new Perro();
@@ -51,7 +51,7 @@ public class ServletAltaPerro extends HttpServlet {
             perro.setPeligroso(request.getParameter("peligroso"));
             perro.setSexo(request.getParameter("sexo"));
             request.setAttribute("mensaje", "Insercíon Correcta");
-            try {
+     
                 gestion.insertarPerro(perro);
                 request.getRequestDispatcher("listaPerros.jsp").forward(request, response);
             } catch (ExcepcionAdopciones ex) {

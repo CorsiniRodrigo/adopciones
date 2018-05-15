@@ -38,7 +38,7 @@ public class ServletModificarAdoptador extends HttpServlet {
      
         ArrayList<String> ListaErrores = validarFormulario(request);
         if (ListaErrores == null) {
-            Gestion gestion = new Gestion();
+          try {      Gestion gestion = new Gestion();
             Adoptador adoptador = new Adoptador();
             adoptador.setAdoptadorid(Integer.parseInt(request.getParameter("adoptadorId")));
             adoptador.setDni(request.getParameter("dni"));
@@ -46,7 +46,7 @@ public class ServletModificarAdoptador extends HttpServlet {
             adoptador.setJardin(request.getParameter("jardin"));
             adoptador.setNombre(request.getParameter("nombre"));
             adoptador.setOtrosPerros(Integer.parseInt(request.getParameter("otrosperros")));
-            try {
+        
                 gestion.modificarAdoptador(adoptador.getAdoptadorid(), adoptador);
                 request.setAttribute("mensaje", "Modificacion Correcta");
                 request.getRequestDispatcher("listaAdoptador.jsp").forward(request, response);

@@ -12,6 +12,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file="Includes/cabecera.jsp" %>
+<%@include file="Includes/menu.jsp" %>
 
         <%
             String mensaje = (String) request.getAttribute("mensaje");

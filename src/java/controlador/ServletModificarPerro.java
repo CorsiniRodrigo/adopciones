@@ -38,9 +38,9 @@ public class ServletModificarPerro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList listaerrores = null;
-        Perro perro = new Perro();
+         try {   Perro perro = new Perro();
         Gestion gestion = new Gestion();
-        try {
+    
             Adoptador adoptador = new Adoptador();
             adoptador.setAdoptadorid(Integer.parseInt(request.getParameter("adoptador")));
             perro.setAmo(adoptador);

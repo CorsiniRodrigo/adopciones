@@ -38,8 +38,8 @@ public class ServletBorrarPerro extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList listaerrores = null;
         Perro perro = new Perro();
-        Gestion gestion = new Gestion();
-        try {
+         try {   Gestion gestion = new Gestion();
+    
             Adoptador adoptador = new Adoptador();
             adoptador.setAdoptadorid(Integer.parseInt(request.getParameter("adoptador")));
             perro.setAmo(adoptador);

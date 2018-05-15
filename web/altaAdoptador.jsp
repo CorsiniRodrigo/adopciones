@@ -8,6 +8,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="Includes/cabecera.jsp" %>
+<%@include file="Includes/menu.jsp" %>
 
         <h1>Alta Adoptador</h1>    
         <fieldset>

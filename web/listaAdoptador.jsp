@@ -10,6 +10,7 @@
 <%@page import="adopciones.Gestion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="Includes/cabecera.jsp" %>
+
         <%
             String mensaje = (String) request.getAttribute("mensaje");
             ArrayList<String> ListaErrores = (ArrayList) request.getAttribute("ListaErrores");

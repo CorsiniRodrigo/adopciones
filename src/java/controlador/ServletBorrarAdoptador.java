@@ -35,10 +35,10 @@ public class ServletBorrarAdoptador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<String> ListaErrores = null;
-        Gestion gestion = new Gestion();
+       
         Adoptador adoptador = new Adoptador();
 
-        try {
+        try { Gestion gestion = new Gestion();
             adoptador.setAdoptadorid(Integer.parseInt(request.getParameter("adoptadorId")));
             gestion.borrarAdoptador(adoptador.getAdoptadorid());
             request.setAttribute("mensaje", "Eliminacion Correcta");

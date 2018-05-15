@@ -5,8 +5,14 @@
  */
 package controlador;
 
+import adopciones.ExcepcionAdopciones;
+import adopciones.Gestion;
+import adopciones.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,32 +38,49 @@ public class ServletAutenticador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        Gestion gestion;
+
         try (PrintWriter out = response.getWriter()) {
-         ServletContext contexto = request.getServletContext();
-        String uE = contexto.getInitParameter("AdministradorEmergencia");
-        String cE = contexto.getInitParameter("ContrasennaEmergencia");
 
-        String u = request.getParameter("usuario");
-        String p = request.getParameter("contrasena");
+            ServletContext contexto = request.getServletContext();
+            String uE = contexto.getInitParameter("AdministradorEmergencia");
+            String cE = contexto.getInitParameter("ContrasennaEmergencia");
 
-        if(uE.equals(u) && cE.equals(p)){
-            Object usuarioSesion = null;
-        //  Usuario usuarioSesion = new Usuario();
-        HttpSession sesion =request.getSession();
-        sesion.setAttribute("UsuarioSesion", usuarioSesion);
-        request.getRequestDispatcher("listaPerros.jsp").forward(request, response);
-        
-        }
-        /*
-        Usuario usuario = new Usuario();
-        
-        
-        
-        
-        
-        
-        */
-        
+            String u = request.getParameter("usuario");
+            String p = request.getParameter("contrasena");
+
+            if (uE.equals(u) && cE.equals(p)) {
+
+                Usuario usuario = new Usuario();
+                usuario.setNombre(u);
+                usuario.setPerfil("A");
+                HttpSession sesion = request.getSession();
+                sesion.setAttribute("UsuarioSesion", usuario);
+                request.getRequestDispatcher("listaAdoptador.jsp").forward(request, response);
+
+            } else {
+                try {
+                    gestion = new Gestion();
+                    ArrayList<Usuario> o = gestion.leerUsuarios();
+                    Usuario usuario = new Usuario();
+                    int pos = 0;
+                    while (pos < o.size()) {
+
+                        if (o.get(pos).getNombre().equals(u) && o.get(pos).getPassword().equals(u)) {
+                            usuario.setNombre(u);
+                            usuario.setPerfil(o.get(pos).getPerfil());
+                            HttpSession sesion = request.getSession();
+                            sesion.setAttribute("Usuario", usuario);
+                            request.getRequestDispatcher("listaAdoptador.jsp").forward(request, response);
+                        }
+
+                        pos++;
+                    }
+               
+                } catch (ExcepcionAdopciones ex) {
+                    Logger.getLogger(ServletAutenticador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
 

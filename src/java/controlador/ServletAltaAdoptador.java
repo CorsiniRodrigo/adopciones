@@ -39,14 +39,14 @@ public class ServletAltaAdoptador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<String> ListaErrores = validarFormulario(request);
         if (ListaErrores == null) {
-            Gestion gestion = new Gestion();
+           try {     Gestion gestion = new Gestion();
             Adoptador adoptador = new Adoptador();
             adoptador.setDni(request.getParameter("dni"));
             adoptador.setHijo(request.getParameter("hijo"));
             adoptador.setJardin(request.getParameter("jardin"));
             adoptador.setNombre(request.getParameter("nombre"));
             adoptador.setOtrosPerros(Integer.parseInt(request.getParameter("otrosperros")));
-            try {
+        
                 gestion.insertarAdoptador(adoptador);
                 request.setAttribute("mensaje", "Insercíon Correcta");
                 request.getRequestDispatcher("listaAdoptador.jsp").forward(request, response);
